@@ -1,7 +1,10 @@
 package com.example.dam_examen_final_sevillano;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
@@ -11,7 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
+    Button btnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +26,15 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        btnLogin = findViewById(R.id.idButtonLogin);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, NotasActivity.class);
+                startActivity(i);
+            }
 
+        });
         // Ahora puedes obtener la referencia del Spinner
         Spinner spinnerOptions1 = findViewById(R.id.spinnerOptions1);
 
@@ -32,6 +43,5 @@ public class MainActivity extends AppCompatActivity {
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerOptions1.setAdapter(adapter1);
     }
-
 
 }
